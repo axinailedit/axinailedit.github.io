@@ -1,0 +1,39 @@
+baseURL = 'https://example.org/'
+languageCode = 'en-us'
+title = 'Axinas Website'
+theme = 'paper'
+comments = false
+
+[params]
+  color = 'linen'
+
+
+  github = 'axinailedit'
+  instagram = 'axinalive'
+
+avatar = 'xinyutongz@gmail.com'
+  name = 'Xinyutong ZHANG'
+  bio = 'Tech + Design = Interaction'
+# ------------------------------
+
+# needed to  render raw HTML (e.g. <sub>, <sup>, <kbd>, <mark>)
+[markup]
+  [markup.goldmark]
+    [markup.goldmark.renderer]
+      unsafe = true
+#  [markup.highlight]
+#    lineNos = true
+
+[menu]
+
+  [[menu.main]]
+    identifier = "about"
+    name = "About"
+    url = "/about/"
+    weight = 10
+
+  [[menu.main]]
+    identifier = "contact"
+    name = "Contact"
+    url = "/contact/"
+    weight = 10
