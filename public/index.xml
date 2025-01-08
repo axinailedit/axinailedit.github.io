@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Axinas Website</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content on Axinas Website</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Tue, 28 May 2019 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>01 Binder</title>
+      <link>http://localhost:1313/post/project1/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/project1/</guid>
+      <description>&lt;p&gt;This grouped project was conducted during our junior year.&lt;/p&gt;&#xA;&lt;img class=&#34;01_00&#34; src=&#34;\images\project1\01_00.jpg&#34; alt=&#34;01_00&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;&#xD;&#xA;&lt;img class=&#34;01_01&#34; src=&#34;\images\project1\01_01.jpg&#34; alt=&#34;01_01&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;&#xD;&#xA;&lt;img class=&#34;01_02&#34; src=&#34;\images\project1\01_02.jpg&#34; alt=&#34;01_02&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;&#xD;&#xA;&lt;img class=&#34;01_03&#34; src=&#34;\images\project1\01_03.jpg&#34; alt=&#34;01_03&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;&#xD;&#xA;&lt;img class=&#34;01_04&#34; src=&#34;\images\project1\01_04.jpg&#34; alt=&#34;01_04&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;</description>
+    </item>
+    <item>
+      <title>02 Reimagining South Ancient Street</title>
+      <link>http://localhost:1313/post/project2/</link>
+      <pubDate>Sat, 09 Mar 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/post/project2/</guid>
+      <description>&lt;p&gt;This grouped project was conducted during our junior year.&lt;/p&gt;&#xA;&lt;img class=&#34;02_00&#34; src=&#34;\images\project2\02_00.jpg&#34; alt=&#34;02_00&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;&#xD;&#xA;&lt;img class=&#34;02_01&#34; src=&#34;\images\project2\02_01.jpg&#34; alt=&#34;02_01&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;&#xD;&#xA;&lt;img class=&#34;02_02&#34; src=&#34;\images\project2\02_02.jpg&#34; alt=&#34;02_02&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;&#xD;&#xA;&lt;img class=&#34;02_03&#34; src=&#34;\images\project2\02_03.jpg&#34; alt=&#34;02_03&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;&#xD;&#xA;&lt;img class=&#34;02_04&#34; src=&#34;\images\project2\02_04.jpg&#34; alt=&#34;02_04&#34; width=&#34;992&#34; height=&#34;746&#34;&gt;</description>
+    </item>
+    <item>
+      <title></title>
+      <link>http://localhost:1313/archives/</link>
+      <pubDate>Tue, 28 May 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/archives/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;Born 2001 in Chengdu, China.&lt;/p&gt;&#xA;&lt;p&gt;Excited to explore and learn more technology with like-minded people:)&lt;/p&gt;&#xA;&lt;p&gt;find my &lt;a href=&#34;https://drive.google.com/file/d/1yk7a7AeI4blS2GXaVHhXjJM6mUQpHU2l/view?usp=drive_link&#34;&gt;CV&lt;/a&gt; here.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Contact</title>
+      <link>http://localhost:1313/contact/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/contact/</guid>
+      <description>&lt;ul&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://github.com/axinailedit&#34;&gt;github.com/axinailedit&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;https://axinailedit.github.io&#34;&gt;this website&lt;/a&gt;&lt;/li&gt;&#xA;&lt;li&gt;&lt;a href=&#34;mailto:xinyutongz@gmail.com&#34;&gt;xinyutongz@gmail.com&lt;/a&gt;&lt;/li&gt;&#xA;&lt;/ul&gt;</description>
+    </item>
+    <item>
+      <title>Portfolio</title>
+      <link>http://localhost:1313/portfolio/</link>
+      <pubDate>Thu, 28 Feb 2019 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/portfolio/</guid>
+      <description>&lt;p&gt;Born 2001 in Chengdu, China.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
