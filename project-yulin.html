@@ -32,7 +32,9 @@
         margin: 0;
         padding: 0;
       }
-      html { scroll-behavior: smooth; }
+      html {
+        scroll-behavior: smooth;
+      }
       body {
         background-color: var(--bg);
         color: var(--text);
@@ -43,8 +45,13 @@
         padding-bottom: var(--nav-h);
         overflow-x: hidden;
       }
-      a { color: inherit; text-decoration: none; }
-      ul { list-style: none; }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
 
       .page {
         padding: var(--page-margin) var(--page-margin) 0;
@@ -100,7 +107,11 @@
         letter-spacing: -0.03em;
         margin-bottom: 14px;
       }
-      .project-tags { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+      }
       .project-tag {
         font-family: var(--sans);
         font-size: clamp(12px, 1.1vw, 16px);
@@ -142,9 +153,9 @@
         overflow: hidden;
       }
 
-      /* 历史文化 — 12×6 cells, flush left */
+      /* 历史文化 — 13×6 cells, flush left */
       .yulin-history {
-        width: calc(12 * var(--u));
+        width: calc(13 * var(--u));
         height: calc(6 * var(--u));
         margin-top: var(--u);
       }
@@ -157,9 +168,9 @@
         margin-left: calc(8 * var(--u));
       }
 
-      /* 用户需求 (research) — 8×5 cells, 2 cells from left */
+      /* 用户需求 (research) — 9×5 cells, 2 cells from left */
       .yulin-userneeds {
-        width: calc(8 * var(--u));
+        width: calc(9 * var(--u));
         height: calc(5 * var(--u));
         margin-top: var(--u);
         margin-left: calc(2 * var(--u));
@@ -196,7 +207,7 @@
         width: calc(24 * var(--u));
         height: calc(3 * var(--u));
         margin-top: var(--u);
-        background: var(--text);
+        background: var(--bg);
         border-radius: 10px;
         display: flex;
         align-items: center;
@@ -208,7 +219,7 @@
         font-weight: 400;
         font-style: italic;
         letter-spacing: 0.02em;
-        color: var(--bg);
+        color: var(--text);
       }
 
       /* ============================================================
@@ -223,52 +234,59 @@
         margin-left: calc(3 * var(--u));
       }
 
-      /* 平面图 — 12×17 cells, 11 cells from left */
-      .yulin-floorplan {
-        width: calc(12 * var(--u));
+      /* 平面图 + detail cards side-by-side wrapper */
+      .yulin-floor-section {
+        position: relative;
+        width: calc(24 * var(--u));
         height: calc(17 * var(--u));
         margin-top: var(--u);
-        margin-left: calc(11 * var(--u));
+      }
+      .yulin-floorplan {
+        position: absolute;
+        right: 0;
+        top: 0;
+        width: calc(12 * var(--u));
+        height: calc(17 * var(--u));
+      }
+      .yulin-detail-col {
+        position: absolute;
+        left: var(--u);
+        top: 0;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
       }
 
-      /* 剧场 — 5×3 cells, 1 cell from left */
+      /* 剧场 — 5×3 cells */
       .yulin-theater {
         width: calc(5 * var(--u));
         height: calc(3 * var(--u));
-        margin-top: var(--u);
-        margin-left: var(--u);
       }
 
-      /* 公园 — 6×4 cells, 4 cells from left */
+      /* 公园 — 6×4 cells */
       .yulin-park {
         width: calc(6 * var(--u));
         height: calc(4 * var(--u));
-        margin-top: var(--u);
-        margin-left: calc(4 * var(--u));
       }
 
-      /* 看台 — 8×4 cells, 1 cell from left */
+      /* 看台 — 8×4 cells */
       .yulin-grandstand {
         width: calc(8 * var(--u));
         height: calc(4 * var(--u));
-        margin-top: var(--u);
-        margin-left: var(--u);
       }
 
-      /* 集市 — 6×4 cells, 2 cells from left */
+      /* 集市 — 6×4 cells */
       .yulin-market {
         width: calc(6 * var(--u));
         height: calc(4 * var(--u));
-        margin-top: var(--u);
-        margin-left: calc(2 * var(--u));
       }
 
       /* 植物 — 22×4 cells, 1 cell from left */
       .yulin-plants {
-        width: calc(22 * var(--u));
+        width: calc(24 * var(--u));
         height: calc(4 * var(--u));
         margin-top: var(--u);
-        margin-left: var(--u);
+        margin-left: 0;
       }
 
       /* ============================================================
@@ -277,7 +295,7 @@
       .yulin-bigimage {
         width: calc(24 * var(--u));
         height: calc(15 * var(--u));
-        margin-top: calc(4 * var(--u));
+        margin-top: calc(2 * var(--u));
       }
 
       /* ============================================================
@@ -301,9 +319,15 @@
         font-weight: 400;
         color: var(--text);
       }
-      .prev-next a { transition: opacity 200ms; }
-      .prev-next a:hover { opacity: 0.45; }
-      .prev-next .sep { color: var(--muted); }
+      .prev-next a {
+        transition: opacity 200ms;
+      }
+      .prev-next a:hover {
+        opacity: 0.45;
+      }
+      .prev-next .sep {
+        color: var(--muted);
+      }
 
       /* ============================================================
          FIXED BOTTOM NAVIGATION
@@ -327,7 +351,10 @@
         align-items: center;
         justify-content: space-between;
       }
-      .foot-nav { display: flex; gap: 40px; }
+      .foot-nav {
+        display: flex;
+        gap: 40px;
+      }
       .foot-nav a {
         font-family: var(--sans);
         font-size: 16px;
@@ -335,8 +362,12 @@
         color: var(--text);
         transition: opacity 200ms;
       }
-      .foot-nav a:hover { opacity: 0.45; }
-      .foot-nav a.active { font-weight: 700; }
+      .foot-nav a:hover {
+        opacity: 0.45;
+      }
+      .foot-nav a.active {
+        font-weight: 700;
+      }
 
       /* ============================================================
          RESPONSIVE
@@ -353,6 +384,7 @@
         .yulin-design-elements,
         .yulin-divider,
         .yulin-detail-userneeds,
+        .yulin-floor-section,
         .yulin-floorplan,
         .yulin-theater,
         .yulin-park,
@@ -363,19 +395,39 @@
           width: 100%;
           margin-left: 0;
         }
+        .yulin-floor-section {
+          height: auto;
+          position: static;
+        }
+        .yulin-floorplan {
+          position: static;
+        }
+        .yulin-detail-col {
+          position: static;
+          flex-direction: row;
+          flex-wrap: wrap;
+          margin-top: var(--u);
+        }
       }
       @media (max-width: 480px) {
-        .foot-nav { gap: 20px; }
-        .foot-nav a { font-size: 13px; }
+        .foot-nav {
+          gap: 20px;
+        }
+        .foot-nav a {
+          font-size: 13px;
+        }
       }
     </style>
   </head>
   <body>
     <div class="page">
-
       <!-- Cover: 24×11 cells -->
       <div class="yulin-cover yulin-block">
-        <img src="assets/yulin-coverimage.png" alt="Yulin street aerial view" loading="lazy" />
+        <img
+          src="assets/yulin-coverimage.png"
+          alt="Yulin street aerial view"
+          loading="lazy"
+        />
       </div>
 
       <!-- Hero card: 20×6 cells, 1 cell from left -->
@@ -392,9 +444,9 @@
       <div class="yulin-context">
         <p>
           This is an urban street revitalization project. The street was once
-          lively with rich culture history and landmarks. We take this renovation
-          as an opportunity to: Create more space for diverse entertainment;
-          Emphasize cultural heritage with architectural style.
+          lively with rich culture history and landmarks. We take this
+          renovation as an opportunity to: Create more space for diverse
+          entertainment; Emphasize cultural heritage with architectural style.
         </p>
       </div>
 
@@ -431,34 +483,31 @@
       <!-- Final Solution divider: 24×3 cells -->
       <div class="yulin-divider"><span>Final Solution</span></div>
 
-      <!-- 用户需求 (solution): 8×4 cells, 3 cells from left -->
-      <div class="yulin-detail-userneeds yulin-block">
-        <img src="assets/yulin-用户需求.png" alt="" loading="lazy" />
+      <div class="yulin-floor-section">
+        <!-- 平面图: 12×17 cells, right side -->
+        <div class="yulin-floorplan yulin-block">
+          <img src="assets/yulin-平面图 1.png" alt="" loading="lazy" />
+        </div>
+        <!-- 剧场、公园、看台、集市: stacked on the left -->
+        <div class="yulin-detail-col">
+          <div class="yulin-theater yulin-block">
+            <img src="assets/yulin-剧场 1.png" alt="" loading="lazy" />
+          </div>
+          <div class="yulin-park yulin-block">
+            <img src="assets/yulin-公园 1.png" alt="" loading="lazy" />
+          </div>
+          <div class="yulin-grandstand yulin-block">
+            <img src="assets/yulin-看台 1.png" alt="" loading="lazy" />
+          </div>
+          <div class="yulin-market yulin-block">
+            <img src="assets/yulin-集市 1.png" alt="" loading="lazy" />
+          </div>
+        </div>
       </div>
 
-      <!-- 平面图: 12×17 cells, 11 cells from left -->
-      <div class="yulin-floorplan yulin-block">
-        <img src="assets/yulin-平面图 1.png" alt="" loading="lazy" />
-      </div>
-
-      <!-- 剧场: 5×3 cells, 1 cell from left -->
-      <div class="yulin-theater yulin-block">
-        <img src="assets/yulin-剧场 1.png" alt="" loading="lazy" />
-      </div>
-
-      <!-- 立面图: 6×4 cells, 4 cells from left -->
-      <div class="yulin-park yulin-block">
+      <!-- 立面图: below the wrap -->
+      <div class="yulin-plants yulin-block">
         <img src="assets/yulin-立面图 1.png" alt="" loading="lazy" />
-      </div>
-
-      <!-- 看台: 8×4 cells, 1 cell from left -->
-      <div class="yulin-grandstand yulin-block">
-        <img src="assets/yulin-看台 1.png" alt="" loading="lazy" />
-      </div>
-
-      <!-- 集市: 6×4 cells, 2 cells from left -->
-      <div class="yulin-market yulin-block">
-        <img src="assets/yulin-集市 1.png" alt="" loading="lazy" />
       </div>
 
       <!-- 植物: 22×4 cells, 1 cell from left -->
@@ -475,9 +524,10 @@
       <div class="prev-next">
         <a href="project-binder.html">prev</a>
         <span class="sep">/</span>
-        <a href="assets/project-street.pdf" target="_blank" rel="noopener">next</a>
+        <a href="assets/project-street.pdf" target="_blank" rel="noopener"
+          >next</a
+        >
       </div>
-
     </div>
 
     <footer class="foot" role="navigation" aria-label="Site navigation">
@@ -489,8 +539,18 @@
         </nav>
         <nav class="foot-nav" aria-label="Social links">
           <a href="mailto:xinyutongz@gmail.com">email</a>
-          <a href="https://www.linkedin.com/in/xinyutong-zhang-574ba1261/" target="_blank" rel="noopener">linkedin</a>
-          <a href="https://github.com/axinailedit" target="_blank" rel="noopener">github</a>
+          <a
+            href="https://www.linkedin.com/in/xinyutong-zhang-574ba1261/"
+            target="_blank"
+            rel="noopener"
+            >linkedin</a
+          >
+          <a
+            href="https://github.com/axinailedit"
+            target="_blank"
+            rel="noopener"
+            >github</a
+          >
         </nav>
       </div>
     </footer>
