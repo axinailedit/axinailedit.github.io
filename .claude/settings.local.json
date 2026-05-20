@@ -1,0 +1,14 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(npx --yes figma-mcp --version)",
+      "Read(//Users/Zhuanz/.npm/**)",
+      "Bash(find /Users/Zhuanz -name \"CP2_Project_Report*\" -maxdepth 5 2>/dev/null)",
+      "Read(//Users/Zhuanz/**)",
+      "Bash(cp /Users/Zhuanz/Documents/KTH/DM2350HumanPerception/CP2_Project_Report_Small.pdf /Users/Zhuanz/PersonalWebsite/assets/project-street.pdf)"
+    ],
+    "additionalDirectories": [
+      "/Users/Zhuanz/Documents/KTH/DM2350HumanPerception"
+    ]
+  }
+}

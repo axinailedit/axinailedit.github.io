@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Binder — Xinyutong ZHANG</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #fefaf6;
+        --text: #000000;
+        --muted: #888888;
+        --border: #000000;
+        --u: 56px;
+        --nav-h: var(--u);
+        --sans: "Instrument Sans", system-ui, sans-serif;
+        --serif: "Instrument Serif", Georgia, serif;
+        --content-w: round(down, calc(100vw - var(--u)), calc(2 * var(--u)));
+        --page-margin: calc((100vw - var(--content-w)) / 2);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: var(--nav-h);
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+      ul {
+        list-style: none;
+      }
+
+      .page {
+        padding: var(--page-margin) var(--page-margin) 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect x='0.5' y='0.5' width='55' height='55' rx='10' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+        background-size: var(--u) var(--u);
+        background-position: 0 0;
+        background-origin: content-box;
+        background-clip: content-box;
+      }
+
+      /* ============================================================
+         TOP SECTION — cover image + hero title card (overlapping)
+      ============================================================ */
+      .binder-top {
+        position: relative;
+        width: calc(24 * var(--u));
+        height: calc(11 * var(--u));
+      }
+
+      /* Cover image: 11×11 cells, anchored top-right (cols 13-24) */
+      .binder-cover {
+        position: absolute;
+        top: 0;
+        right: 0;
+        width: calc(11 * var(--u));
+        height: calc(11 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: transparent;
+        overflow: hidden;
+        z-index: 2;
+      }
+      .binder-cover img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* Hero title card: 20×6 cells, anchored bottom-left (overlaps cover) */
+      .binder-hero-card {
+        position: absolute;
+        top: var(--u);
+        left: calc(2 * var(--u));
+        width: calc(20 * var(--u));
+        height: calc(6 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        padding: var(--u);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        z-index: 1;
+      }
+
+      .binder-title {
+        font-family: var(--sans);
+        font-size: clamp(52px, 6.7vw, 144px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin-bottom: 14px;
+      }
+
+      .project-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px 24px;
+      }
+      .project-tag {
+        font-family: var(--sans);
+        font-size: clamp(12px, 1.1vw, 16px);
+        font-weight: 400;
+        color: var(--muted);
+      }
+
+      /* ============================================================
+         DESCRIPTION CARD — 16×4 cells, left-aligned
+      ============================================================ */
+      .binder-desc-card {
+        width: calc(15 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: calc(-1 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        padding: var(--u);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+        z-index: 1;
+      }
+      .binder-desc-card p {
+        font-family: var(--serif);
+        font-size: clamp(18px, 2.2vw, 32px);
+        font-weight: 400;
+        line-height: 1.4;
+        color: var(--text);
+      }
+
+      /* ============================================================
+         CONTEXT CARD — 10×4 cells, offset 13 cells from left
+      ============================================================ */
+      .binder-context-card {
+        width: calc(10 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(13 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        padding: var(--u);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+      .binder-context-card p {
+        font-family: var(--serif);
+        font-size: clamp(13px, 1.3vw, 24px);
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--text);
+      }
+
+      /* ============================================================
+         FULL-WIDTH IMAGE BLOCKS — 24×16 cells, transparent (grid shows)
+      ============================================================ */
+      .binder-image {
+        width: calc(24 * var(--u));
+        height: calc(16 * var(--u));
+        margin-top: var(--u);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: transparent;
+        overflow: hidden;
+      }
+      .binder-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .binder-image + .binder-image,
+      .binder-image + .section-divider,
+      .section-divider + .binder-image {
+        margin-top: 0;
+      }
+
+      /* ============================================================
+         SECTION DIVIDERS — 24×3 cells
+      ============================================================ */
+      .section-divider {
+        width: calc(24 * var(--u));
+        height: calc(3 * var(--u));
+        margin-top: var(--u);
+        background: var(--bg);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .section-divider span {
+        font-family: var(--serif);
+        font-size: clamp(28px, 3.3vw, 47px);
+        font-weight: 400;
+        font-style: italic;
+        letter-spacing: 0.02em;
+        color: var(--text);
+      }
+
+      /* ============================================================
+         FUTURE PLANS CARD — 20×6 cells, 1 cell from left
+      ============================================================ */
+      .future-card {
+        width: calc(20 * var(--u));
+        height: calc(6 * var(--u));
+        margin-top: var(--u);
+        margin-left: var(--u);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        padding: var(--u);
+        overflow: hidden;
+      }
+      .future-card h2 {
+        font-family: var(--sans);
+        font-size: clamp(28px, 3.3vw, 48px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        margin-bottom: 24px;
+      }
+      .future-card p {
+        font-family: var(--serif);
+        font-size: clamp(14px, 1.3vw, 18px);
+        line-height: 1.7;
+        color: var(--text);
+      }
+
+      /* ============================================================
+         PREV / NEXT — 3×2 cells, right-aligned
+      ============================================================ */
+      .prev-next {
+        width: calc(3 * var(--u));
+        height: calc(2 * var(--u));
+        margin-top: var(--u);
+        margin-left: auto;
+        margin-bottom: calc(2 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-family: var(--sans);
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text);
+      }
+      .prev-next a {
+        transition: opacity 200ms;
+      }
+      .prev-next a:hover {
+        opacity: 0.45;
+      }
+      .prev-next .sep {
+        color: var(--muted);
+      }
+      .prev-next .prev-disabled {
+        color: var(--muted);
+        cursor: default;
+      }
+
+      /* ============================================================
+         FIXED BOTTOM NAVIGATION
+      ============================================================ */
+      .foot {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: var(--nav-h);
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+      }
+      .foot-inner {
+        padding: 0 var(--page-margin);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .foot-nav {
+        display: flex;
+        gap: 40px;
+      }
+      .foot-nav a {
+        font-family: var(--sans);
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text);
+        transition: opacity 200ms;
+      }
+      .foot-nav a:hover {
+        opacity: 0.45;
+      }
+      .foot-nav a.active {
+        font-weight: 700;
+      }
+
+      /* ============================================================
+         RESPONSIVE
+      ============================================================ */
+      @media (max-width: 1200px) {
+        .binder-top {
+          height: auto;
+          min-height: calc(11 * var(--u));
+        }
+        .binder-cover {
+          position: static;
+          width: 100%;
+          height: calc(8 * var(--u));
+          margin-bottom: var(--u);
+        }
+        .binder-hero-card {
+          position: static;
+          width: 100%;
+          height: auto;
+          min-height: calc(6 * var(--u));
+        }
+        .binder-desc-card,
+        .binder-context-card,
+        .binder-image,
+        .section-divider,
+        .future-card {
+          width: 100%;
+        }
+        .binder-context-card {
+          margin-left: 0;
+        }
+        .future-card {
+          margin-left: 0;
+        }
+      }
+      @media (max-width: 480px) {
+        .foot-nav {
+          gap: 20px;
+        }
+        .foot-nav a {
+          font-size: 13px;
+        }
+        .binder-image {
+          height: calc(8 * var(--u));
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <!-- Top section: cover image (top-right) + hero card (bottom-left, overlapping) -->
+      <div class="binder-top">
+        <div class="binder-cover">
+          <img
+            src="assets/CardImage-Binder.png"
+            alt="Binder project cover"
+            loading="lazy"
+          />
+        </div>
+        <div class="binder-hero-card">
+          <h1 class="binder-title">Binder</h1>
+          <div class="project-tags">
+            <span class="project-tag">#Design</span>
+            <span class="project-tag">#UX</span>
+            <span class="project-tag">#Research</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Description: 16×4 cells -->
+      <div class="binder-desc-card">
+        <p>
+          Mobile app &amp; service design connecting teachers and students from
+          short-term education projects
+        </p>
+      </div>
+
+      <!-- Context: 10×4 cells, offset 13 cells -->
+      <div class="binder-context-card">
+        <p>
+          Zhijiao (支教) is a common education program, where college students
+          give short-term courses to K12 students in remote areas.
+        </p>
+      </div>
+
+      <!-- Image 1 -->
+      <div class="binder-image">
+        <img src="assets/binder-image1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Define -->
+      <div class="section-divider"><span>Define</span></div>
+
+      <!-- Images 2 & 3 -->
+      <div class="binder-image">
+        <img src="assets/binder-image2.png" alt="" loading="lazy" />
+      </div>
+      <div class="binder-image">
+        <img src="assets/binder-image3.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Develop & Deliver -->
+      <div class="section-divider"><span>Develop &amp; Deliver</span></div>
+
+      <!-- Images 4 & 5 -->
+      <div class="binder-image">
+        <img src="assets/binder-image4.png" alt="" loading="lazy" />
+      </div>
+      <div class="binder-image">
+        <img src="assets/binder-image5.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Reflection -->
+      <div class="section-divider"><span>Reflection</span></div>
+
+      <!-- Future Plans: 20×6 cells, 1 cell from left -->
+      <div class="future-card">
+        <h2>Future Plans</h2>
+        <p>
+          Usability Testing: Recruit more users, set up experiment<br /><br />
+          End-to-end Development:
+        </p>
+      </div>
+
+      <!-- Prev / next: 3×2 cells, right-aligned -->
+      <div class="prev-next">
+        <span class="sep prev-disabled">prev</span>
+        <span class="sep">/</span>
+        <a href="project-yulin.html">next</a>
+      </div>
+    </div>
+
+    <footer class="foot" role="navigation" aria-label="Site navigation">
+      <div class="foot-inner">
+        <nav class="foot-nav">
+          <a href="index.html">WORKS</a>
+          <a href="about.html">ABOUT</a>
+          <a href="assets/cv.pdf" target="_blank" rel="noopener">CV</a>
+        </nav>
+        <nav class="foot-nav" aria-label="Social links">
+          <a href="mailto:xinyutongz@gmail.com">email</a>
+          <a href="https://www.linkedin.com/in/xinyutong-zhang-574ba1261/" target="_blank" rel="noopener">linkedin</a>
+          <a href="https://github.com/axinailedit" target="_blank" rel="noopener">github</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,378 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>About — Xinyutong ZHANG</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #fefaf6;
+        --text: #000000;
+        --muted: #888888;
+        --border: #000000;
+        --u: 56px;
+        --nav-h: var(--u);
+        --sans: "Instrument Sans", system-ui, sans-serif;
+        --serif: "Instrument Serif", Georgia, serif;
+        --content-w: round(down, calc(100vw - var(--u)), calc(2 * var(--u)));
+        --page-margin: calc((100vw - var(--content-w)) / 2);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html {
+        scroll-behavior: smooth;
+      }
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: var(--nav-h);
+        overflow-x: hidden;
+      }
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      .page {
+        padding: var(--page-margin) var(--page-margin) 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect x='0.5' y='0.5' width='55' height='55' rx='10' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+        background-size: var(--u) var(--u);
+        background-position: 0 0;
+        background-origin: content-box;
+        background-clip: content-box;
+      }
+
+      /* ============================================================
+       HERO: photo (8 cells = 448px) | info
+    ============================================================ */
+      .hero {
+        display: grid;
+        grid-template-columns: calc(8 * var(--u)) 1fr;
+        height: calc(11 * var(--u)); /* 616px */
+        margin-top: 0;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+      }
+
+      .hero-photo {
+        background: #e8e8e8;
+        overflow: hidden;
+        position: relative;
+      }
+      .hero-photo img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+        filter: grayscale(100%);
+      }
+      .hero-photo-placeholder {
+        position: absolute;
+        inset: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-family: var(--sans);
+        font-size: 80px;
+        font-weight: 700;
+        color: var(--border);
+        letter-spacing: -0.04em;
+        user-select: none;
+      }
+
+      .hero-info {
+        padding: var(--u); /* 56px */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        background: var(--bg);
+      }
+      .hero-name {
+        font-family: var(--sans);
+        font-size: clamp(36px, 4.4vw, 64px);
+        font-weight: 700;
+        letter-spacing: -0.03em;
+        line-height: 1.05;
+        margin-bottom: 24px;
+      }
+      .hero-tagline {
+        font-family: var(--serif);
+        font-size: clamp(16px, 1.7vw, 24px);
+        font-style: italic;
+        font-weight: 400;
+        line-height: 1.3;
+        margin-bottom: 20px;
+      }
+      .hero-bio {
+        font-family: var(--serif);
+        font-size: clamp(13px, 1.1vw, 16px);
+        font-weight: 400;
+        line-height: 1.7;
+        color: var(--text);
+      }
+      .hero-bio p + p {
+        margin-top: 14px;
+      }
+
+      /* ============================================================
+       EDUCATION — indented to align with info column
+    ============================================================ */
+      .edu {
+        padding-top: var(--u);
+        padding-bottom: calc(2 * var(--u));
+      }
+      .edu-row {
+        position: relative;
+        height: calc(9 * var(--u));
+      }
+      .edu-card {
+        position: absolute;
+        top: 0;
+        left: calc(4 * var(--u));
+        width: calc(11 * var(--u));
+        height: calc(9 * var(--u));
+        padding: var(--u);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        overflow: hidden;
+      }
+      .a-painting {
+        position: absolute;
+        top: calc(2 * var(--u));
+        left: calc(18 * var(--u));
+        width: calc(3 * var(--u));
+        height: calc(4 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        overflow: hidden;
+      }
+      .a-painting video {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+      .edu-heading {
+        font-family: var(--sans);
+        font-size: clamp(16px, 1.7vw, 24px);
+        font-weight: 700;
+        margin-bottom: 40px;
+      }
+      .edu-list {
+        display: flex;
+        flex-direction: column;
+      }
+      .edu-item {
+        padding: 20px 0;
+        border-top: 1px solid var(--border);
+      }
+      .edu-item:last-child {
+        border-bottom: 1px solid var(--border);
+      }
+      .edu-school {
+        font-family: var(--sans);
+        font-size: clamp(14px, 1.3vw, 18px);
+        font-weight: 700;
+        margin-bottom: 4px;
+      }
+      .edu-degree {
+        font-family: var(--serif);
+        font-size: clamp(13px, 1.1vw, 16px);
+        color: var(--muted);
+      }
+
+      /* ============================================================
+       FIXED BOTTOM NAV
+    ============================================================ */
+      .foot {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: var(--nav-h);
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+      }
+      .foot-inner {
+        padding: 0 var(--page-margin);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .foot-nav {
+        display: flex;
+        gap: 40px;
+      }
+      .foot-nav a {
+        font-family: var(--sans);
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text);
+        transition: opacity 200ms;
+      }
+      .foot-nav a:hover {
+        opacity: 0.45;
+      }
+      .foot-nav a.active {
+        font-weight: 700;
+      }
+
+      /* ============================================================
+       RESPONSIVE
+    ============================================================ */
+      @media (max-width: 900px) {
+        .hero {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+        .hero-photo {
+          height: calc(5 * var(--u)); /* 280px */
+          border-right: none;
+          border-bottom: 1px solid var(--border);
+        }
+        .edu-row {
+          height: auto;
+          min-height: calc(9 * var(--u));
+        }
+        .edu-card {
+          position: static;
+          width: 100%;
+        }
+        .a-painting {
+          position: static;
+          width: 100%;
+          margin-top: var(--u);
+        }
+      }
+      @media (max-width: 480px) {
+        .foot-nav {
+          gap: 20px;
+        }
+        .foot-nav a {
+          font-size: 13px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+      <section class="hero">
+        <div class="hero-photo">
+          <img src="assets/about-profilepic.png" alt="Xinyutong ZHANG" />
+        </div>
+        <div class="hero-info">
+          <h1 class="hero-name">Xinyutong ZHANG</h1>
+          <p class="hero-tagline">
+            Bridging Human Intuition with Machine Intelligence.
+          </p>
+          <div class="hero-bio">
+            <p>
+              Hi, I'm Xinyutong. Currently, I am navigating the intersection of
+              Human-Computer Interaction (HCI) and Artificial Intelligence as a
+              Master's student at KTH Royal Institute of Technology, with an
+              upcoming residency at EPFL in 2026.
+            </p>
+            <p>
+              My journey began in Landscape Architecture—learning how people
+              move through physical spaces—and has evolved into architecting how
+              they interact with digital ones. Today, my focus lies in AI
+              Product Management and MedTech, where I leverage XR, machine
+              learning, and human-centric design to build tools that don't just
+              function, but empower.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section class="edu" aria-label="Education">
+        <div class="edu-row">
+          <div class="edu-card">
+            <h2 class="edu-heading">My Education</h2>
+            <ul class="edu-list">
+              <li class="edu-item">
+                <div class="edu-school">
+                  EPFL Swiss Federal Technology Institute of Lausanne
+                </div>
+                <div class="edu-degree">Exchange (upcoming))</div>
+              </li>
+              <li class="edu-item">
+                <div class="edu-school">KTH Royal Institute of Technology</div>
+                <div class="edu-degree">
+                  Msc Interactive Media Technology. 2025-2027
+                </div>
+              </li>
+              <li class="edu-item">
+                <div class="edu-school">
+                  Ecole Nationale Supérieure d'Architecture et Paysage
+                </div>
+                <div class="edu-degree">Exchange 2022-2023</div>
+              </li>
+              <li class="edu-item">
+                <div class="edu-school">Sichuan Agricultural University</div>
+                <div class="edu-degree">
+                  BSc Landscape Architecture 2019-2024
+                </div>
+              </li>
+            </ul>
+          </div>
+          <div class="a-painting">
+            <video
+              src="assets/a-painting.mp4"
+              autoplay
+              loop
+              muted
+              playsinline
+            ></video>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="foot" role="navigation" aria-label="Site navigation">
+      <div class="foot-inner">
+        <nav class="foot-nav">
+          <a href="index.html">WORKS</a>
+          <a href="about.html" class="active">ABOUT</a>
+          <a href="assets/cv.pdf" target="_blank" rel="noopener">CV</a>
+        </nav>
+        <nav class="foot-nav" aria-label="Social links">
+          <a href="mailto:xinyutongz@gmail.com">email</a>
+          <a
+            href="https://www.linkedin.com/in/xinyutong-zhang-574ba1261/"
+            target="_blank"
+            rel="noopener"
+            >linkedin</a
+          >
+          <a
+            href="https://github.com/axinailedit"
+            target="_blank"
+            rel="noopener"
+            >github</a
+          >
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>

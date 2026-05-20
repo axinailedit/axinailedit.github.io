@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Yulin Dream — Xinyutong ZHANG</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;700&family=Instrument+Serif:ital@0;1&display=swap"
+      rel="stylesheet"
+    />
+
+    <style>
+      :root {
+        --bg: #fefaf6;
+        --text: #000000;
+        --muted: #888888;
+        --border: #000000;
+        --u: 56px;
+        --nav-h: var(--u);
+        --sans: "Instrument Sans", system-ui, sans-serif;
+        --serif: "Instrument Serif", Georgia, serif;
+        --content-w: round(down, calc(100vw - var(--u)), calc(2 * var(--u)));
+        --page-margin: calc((100vw - var(--content-w)) / 2);
+      }
+
+      *,
+      *::before,
+      *::after {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+      html { scroll-behavior: smooth; }
+      body {
+        background-color: var(--bg);
+        color: var(--text);
+        font-family: var(--sans);
+        font-size: 16px;
+        line-height: 1.5;
+        -webkit-font-smoothing: antialiased;
+        padding-bottom: var(--nav-h);
+        overflow-x: hidden;
+      }
+      a { color: inherit; text-decoration: none; }
+      ul { list-style: none; }
+
+      .page {
+        padding: var(--page-margin) var(--page-margin) 0;
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='56'%3E%3Crect x='0.5' y='0.5' width='55' height='55' rx='10' fill='none' stroke='%23000' stroke-width='1'/%3E%3C/svg%3E");
+        background-size: var(--u) var(--u);
+        background-position: 0 0;
+        background-origin: content-box;
+        background-clip: content-box;
+      }
+
+      /* shared image fill */
+      .yulin-cover img,
+      .yulin-block img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        display: block;
+      }
+
+      /* ============================================================
+         COVER — 24×11 cells, full-width aerial photo
+      ============================================================ */
+      .yulin-cover {
+        width: calc(24 * var(--u));
+        height: calc(11 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        overflow: hidden;
+        background: transparent;
+      }
+
+      /* ============================================================
+         HERO CARD — 20×6 cells, 1 cell from left
+      ============================================================ */
+      .yulin-hero-card {
+        width: calc(20 * var(--u));
+        height: calc(6 * var(--u));
+        margin-top: var(--u);
+        margin-left: var(--u);
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        padding: var(--u);
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+      }
+      .yulin-title {
+        font-family: var(--sans);
+        font-size: clamp(52px, 6.7vw, 96px);
+        font-weight: 700;
+        line-height: 1;
+        letter-spacing: -0.03em;
+        margin-bottom: 14px;
+      }
+      .project-tags { display: flex; flex-wrap: wrap; gap: 8px 24px; }
+      .project-tag {
+        font-family: var(--sans);
+        font-size: clamp(12px, 1.1vw, 16px);
+        font-weight: 400;
+        color: var(--muted);
+      }
+
+      /* ============================================================
+         CONTEXT TEXT — 12×4 cells, 11 cells from left
+      ============================================================ */
+      .yulin-context {
+        width: calc(12 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(11 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        padding: var(--u);
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+      .yulin-context p {
+        font-family: var(--serif);
+        font-size: clamp(13px, 1.3vw, 18px);
+        font-weight: 400;
+        line-height: 1.6;
+        color: var(--text);
+      }
+
+      /* ============================================================
+         IMAGE BLOCKS — shared style, all transparent (grid shows)
+      ============================================================ */
+      .yulin-block {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: transparent;
+        overflow: hidden;
+      }
+
+      /* 历史文化 — 12×6 cells, flush left */
+      .yulin-history {
+        width: calc(12 * var(--u));
+        height: calc(6 * var(--u));
+        margin-top: var(--u);
+      }
+
+      /* 周边分析 — 14×4 cells, 8 cells from left */
+      .yulin-surroundings {
+        width: calc(14 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(8 * var(--u));
+      }
+
+      /* 用户需求 (research) — 8×5 cells, 2 cells from left */
+      .yulin-userneeds {
+        width: calc(8 * var(--u));
+        height: calc(5 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(2 * var(--u));
+      }
+
+      /* 改进点 — 17×5 cells, 3 cells from left */
+      .yulin-improvements {
+        width: calc(17 * var(--u));
+        height: calc(5 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(3 * var(--u));
+      }
+
+      /* 设计策略 — 8×7 cells, 3 cells from left */
+      .yulin-strategy {
+        width: calc(8 * var(--u));
+        height: calc(7 * var(--u));
+        margin-top: calc(2 * var(--u));
+        margin-left: calc(3 * var(--u));
+      }
+
+      /* 设计元素 — 9×6 cells, 12 cells from left */
+      .yulin-design-elements {
+        width: calc(9 * var(--u));
+        height: calc(6 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(12 * var(--u));
+      }
+
+      /* ============================================================
+         FINAL SOLUTION DIVIDER — 24×3 cells
+      ============================================================ */
+      .yulin-divider {
+        width: calc(24 * var(--u));
+        height: calc(3 * var(--u));
+        margin-top: var(--u);
+        background: var(--text);
+        border-radius: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+      .yulin-divider span {
+        font-family: var(--serif);
+        font-size: clamp(28px, 3.3vw, 47px);
+        font-weight: 400;
+        font-style: italic;
+        letter-spacing: 0.02em;
+        color: var(--bg);
+      }
+
+      /* ============================================================
+         SOLUTION DETAIL BLOCKS
+      ============================================================ */
+
+      /* 用户需求 (solution) — 8×4 cells, 3 cells from left */
+      .yulin-detail-userneeds {
+        width: calc(8 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(3 * var(--u));
+      }
+
+      /* 平面图 — 12×17 cells, 11 cells from left */
+      .yulin-floorplan {
+        width: calc(12 * var(--u));
+        height: calc(17 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(11 * var(--u));
+      }
+
+      /* 剧场 — 5×3 cells, 1 cell from left */
+      .yulin-theater {
+        width: calc(5 * var(--u));
+        height: calc(3 * var(--u));
+        margin-top: var(--u);
+        margin-left: var(--u);
+      }
+
+      /* 公园 — 6×4 cells, 4 cells from left */
+      .yulin-park {
+        width: calc(6 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(4 * var(--u));
+      }
+
+      /* 看台 — 8×4 cells, 1 cell from left */
+      .yulin-grandstand {
+        width: calc(8 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: var(--u);
+        margin-left: var(--u);
+      }
+
+      /* 集市 — 6×4 cells, 2 cells from left */
+      .yulin-market {
+        width: calc(6 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: var(--u);
+        margin-left: calc(2 * var(--u));
+      }
+
+      /* 植物 — 22×4 cells, 1 cell from left */
+      .yulin-plants {
+        width: calc(22 * var(--u));
+        height: calc(4 * var(--u));
+        margin-top: var(--u);
+        margin-left: var(--u);
+      }
+
+      /* ============================================================
+         LARGE CLOSING IMAGE — 24×15 cells
+      ============================================================ */
+      .yulin-bigimage {
+        width: calc(24 * var(--u));
+        height: calc(15 * var(--u));
+        margin-top: calc(4 * var(--u));
+      }
+
+      /* ============================================================
+         PREV / NEXT — 3×2 cells, right-aligned
+      ============================================================ */
+      .prev-next {
+        width: calc(3 * var(--u));
+        height: calc(2 * var(--u));
+        margin-top: calc(2 * var(--u));
+        margin-left: auto;
+        margin-bottom: calc(2 * var(--u));
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--bg);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 6px;
+        font-family: var(--sans);
+        font-size: 14px;
+        font-weight: 400;
+        color: var(--text);
+      }
+      .prev-next a { transition: opacity 200ms; }
+      .prev-next a:hover { opacity: 0.45; }
+      .prev-next .sep { color: var(--muted); }
+
+      /* ============================================================
+         FIXED BOTTOM NAVIGATION
+      ============================================================ */
+      .foot {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        height: var(--nav-h);
+        background: var(--bg);
+        border-top: 1px solid var(--border);
+        z-index: 100;
+        display: flex;
+        align-items: center;
+      }
+      .foot-inner {
+        padding: 0 var(--page-margin);
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+      .foot-nav { display: flex; gap: 40px; }
+      .foot-nav a {
+        font-family: var(--sans);
+        font-size: 16px;
+        font-weight: 400;
+        color: var(--text);
+        transition: opacity 200ms;
+      }
+      .foot-nav a:hover { opacity: 0.45; }
+      .foot-nav a.active { font-weight: 700; }
+
+      /* ============================================================
+         RESPONSIVE
+      ============================================================ */
+      @media (max-width: 1200px) {
+        .yulin-cover,
+        .yulin-hero-card,
+        .yulin-context,
+        .yulin-history,
+        .yulin-surroundings,
+        .yulin-userneeds,
+        .yulin-improvements,
+        .yulin-strategy,
+        .yulin-design-elements,
+        .yulin-divider,
+        .yulin-detail-userneeds,
+        .yulin-floorplan,
+        .yulin-theater,
+        .yulin-park,
+        .yulin-grandstand,
+        .yulin-market,
+        .yulin-plants,
+        .yulin-bigimage {
+          width: 100%;
+          margin-left: 0;
+        }
+      }
+      @media (max-width: 480px) {
+        .foot-nav { gap: 20px; }
+        .foot-nav a { font-size: 13px; }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="page">
+
+      <!-- Cover: 24×11 cells -->
+      <div class="yulin-cover yulin-block">
+        <img src="assets/yulin-coverimage.png" alt="Yulin street aerial view" loading="lazy" />
+      </div>
+
+      <!-- Hero card: 20×6 cells, 1 cell from left -->
+      <div class="yulin-hero-card">
+        <h1 class="yulin-title">Yulin Dream</h1>
+        <div class="project-tags">
+          <span class="project-tag">#3D Modeling</span>
+          <span class="project-tag">#UX</span>
+          <span class="project-tag">#Research</span>
+        </div>
+      </div>
+
+      <!-- Context text: 12×4 cells, 11 cells from left -->
+      <div class="yulin-context">
+        <p>
+          This is an urban street revitalization project. The street was once
+          lively with rich culture history and landmarks. We take this renovation
+          as an opportunity to: Create more space for diverse entertainment;
+          Emphasize cultural heritage with architectural style.
+        </p>
+      </div>
+
+      <!-- 历史文化: 12×6 cells, flush left -->
+      <div class="yulin-history yulin-block">
+        <img src="assets/yulin-历史文化.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 周边分析: 14×4 cells, 8 cells from left -->
+      <div class="yulin-surroundings yulin-block">
+        <img src="assets/yulin-周边分析.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 用户需求 (research): 8×5 cells, 2 cells from left -->
+      <div class="yulin-userneeds yulin-block">
+        <img src="assets/yulin-用户需求.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 改进点: 17×5 cells, 3 cells from left -->
+      <div class="yulin-improvements yulin-block">
+        <img src="assets/yulin-改进点.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 设计策略: 8×7 cells, 3 cells from left -->
+      <div class="yulin-strategy yulin-block">
+        <img src="assets/yulin-设计策略.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 设计元素: 9×6 cells, 12 cells from left -->
+      <div class="yulin-design-elements yulin-block">
+        <img src="assets/yulin-设计元素.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Final Solution divider: 24×3 cells -->
+      <div class="yulin-divider"><span>Final Solution</span></div>
+
+      <!-- 用户需求 (solution): 8×4 cells, 3 cells from left -->
+      <div class="yulin-detail-userneeds yulin-block">
+        <img src="assets/yulin-用户需求.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 平面图: 12×17 cells, 11 cells from left -->
+      <div class="yulin-floorplan yulin-block">
+        <img src="assets/yulin-平面图 1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 剧场: 5×3 cells, 1 cell from left -->
+      <div class="yulin-theater yulin-block">
+        <img src="assets/yulin-剧场 1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 立面图: 6×4 cells, 4 cells from left -->
+      <div class="yulin-park yulin-block">
+        <img src="assets/yulin-立面图 1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 看台: 8×4 cells, 1 cell from left -->
+      <div class="yulin-grandstand yulin-block">
+        <img src="assets/yulin-看台 1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 集市: 6×4 cells, 2 cells from left -->
+      <div class="yulin-market yulin-block">
+        <img src="assets/yulin-集市 1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- 植物: 22×4 cells, 1 cell from left -->
+      <div class="yulin-plants yulin-block">
+        <img src="assets/yulin-植物 1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Large closing image: 24×15 cells -->
+      <div class="yulin-bigimage yulin-block">
+        <img src="assets/yulin-大图 1.png" alt="" loading="lazy" />
+      </div>
+
+      <!-- Prev / next: 3×2 cells, right-aligned -->
+      <div class="prev-next">
+        <a href="project-binder.html">prev</a>
+        <span class="sep">/</span>
+        <a href="assets/project-street.pdf" target="_blank" rel="noopener">next</a>
+      </div>
+
+    </div>
+
+    <footer class="foot" role="navigation" aria-label="Site navigation">
+      <div class="foot-inner">
+        <nav class="foot-nav">
+          <a href="index.html">WORKS</a>
+          <a href="about.html">ABOUT</a>
+          <a href="assets/cv.pdf" target="_blank" rel="noopener">CV</a>
+        </nav>
+        <nav class="foot-nav" aria-label="Social links">
+          <a href="mailto:xinyutongz@gmail.com">email</a>
+          <a href="https://www.linkedin.com/in/xinyutong-zhang-574ba1261/" target="_blank" rel="noopener">linkedin</a>
+          <a href="https://github.com/axinailedit" target="_blank" rel="noopener">github</a>
+        </nav>
+      </div>
+    </footer>
+  </body>
+</html>
